@@ -1,0 +1,21 @@
+@import "fonts";
+body{
+  font-size: 15px;
+  line-height: 1.4;
+  color: #222222;
+  background-color: #ffffff;
+  font-family: 'Roboto';
+  font-weight: normal;
+}
+
+div {
+  box-sizing: border-box;
+}
+a, input, textarea, select {
+  outline: 0;
+}
+
+.vertical-middle {
+  display: inline-block;
+  vertical-align: middle;
+}

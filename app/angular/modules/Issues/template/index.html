@@ -1,0 +1,19 @@
+<div class="link-back" ui-sref="Home">
+ Вернуться назад
+</div>
+<div class="issues-header">
+    <!--<pre>{{issuesSingle | json}}</pre>-->
+    <div class="issues-header__number vertical-middle">
+        # {{issuesSingle.number}}
+    </div>
+    <div class="issues-header__title vertical-middle">
+        {{issuesSingle.title}}
+    </div>
+    <div class="issues-header__date">
+        Дата создания: {{issuesSingle.created_at| date:'yyyy-MM-dd HH:mm:ss'}}
+    </div>
+    <div class="issues-header__date">
+        Дата обновления: {{issuesSingle.updated_at| date:'yyyy-MM-dd HH:mm:ss'}}
+    </div>
+
+</div>

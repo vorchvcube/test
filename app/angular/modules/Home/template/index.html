@@ -1,0 +1,90 @@
+
+    <div class="top-panel">
+        <div class="top-panel__status-q-server">
+            <span class="top-panel__succes" ng-if="error.server.status==true"><!--Запрос успешно выполнен--></span>
+            <span class="top-panel__error" ng-if="error.server.status==false">Запрос выполнен с ошибкой</span>
+        </div>
+        <div class="top-panel__wrap-input top-panel__wrap-input_first vertical-middle">
+            <div class="top-panel__title-input"  ng-class="{'error': error.length>0}">
+                Введите имя пользователя
+            </div>
+            <div class="top-panel__input">
+                <input type="text" ng-change="selectRepositoryUser()" placeholder="Введите имя пользователя (Github)" ng-model="nameUser">
+            </div>
+            <div class="top-panel__error-input">
+                <div>{{error.input}}</div>
+                <div> {{error.name}}</div>
+            </div>
+        </div>
+        <div class="top-panel__wrap-input vertical-middle">
+            <div class="top-panel__title-input"  ng-class="{'error': error.length>0}">
+                Выберите репозиторий
+            </div>
+            <div class="top-panel__input">
+                <select ng-model="selectRepos">
+                    <option value="">Выберите репозиторий</option>
+                    <option ng-repeat="i in dataSelect" value="{{i.name}}">{{i.name}}</option>
+                </select>
+               <!-- <input type="text" placeholder="Введите имя репозитория" ng-model="nameRepository">-->
+            </div>
+            <div class="top-panel__error-input">
+                {{error.select}}
+            </div>
+        </div>
+        <div class="top-panel__wrap-button vertical-middle">
+            <div class="top-panel__button-search" ng-click="getUserRep(query)">
+                Поиск
+            </div>
+        </div>
+        <div class="top-panel__wrap-number vertical-middle">
+            <div class="top-panel__title-inp-num">
+                Количество объектов на странице:
+            </div>
+            <div class="top-panel__input-number">
+                <input type="number" ng-model="countItem" min="1" max="100" ng-value="countItem">
+            </div>
+        </div>
+    </div>
+    <!--<pre>{{issue | json}}</pre>-->
+    <div class="issues-content">
+        <div class="issues-content__title-section" ng-if="issue.length==0"> Нет issues</div>
+        <div class="issues-content__title-section" ng-if="issue.length>0">
+            Список issues
+        </div>
+        <div class="issues-content__wrap" ng-repeat="item in issue">
+            <div class="issues-content__autor-wrapper vertical-middle">
+                <div class="issues-content__autor-photo">
+                    <img ng-src="{{item.user.avatar_url}}" alt="">
+                </div>
+                <div class="issues-content__autor-name">
+                    <span class="issues-content__autor-title">Автор:</span>
+                    {{item.user.login}}
+                </div>
+                <div class="issues-content__autor-link">
+                    <a href="{{item.user.html_url}}" target="_blank">Страница (GitHub)</a>
+                </div>
+            </div>
+            <div class="issues-content__item-wrap vertical-middle">
+                <div class="issues-content__number">
+                    # {{item.number}}
+                </div>
+                <div class="issues-content__title">
+                    {{item.title}}
+                </div>
+                <div class="issues-content__date-open">
+                    Дата открытия: {{item.created_at| date:'yyyy-MM-dd HH:mm:ss'}}
+                </div>
+                <div class="issues-content__issues-show" ui-sref="Issues({
+                nameUser:nameUser,
+                selectRepos:selectRepos,
+                itemNumber:{{item.number}}
+                })">
+                    Подробнее
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+

@@ -1,0 +1,10 @@
+;(function(){
+  	    angular.module('App',[
+            'ui.router',
+            'Home',
+            'Issues'
+      ])
+        .config(AppConfig)
+  	    .run(AppRun)
+        .controller('AppCtrl',AppCtrl)
+})();
