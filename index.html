@@ -19,6 +19,10 @@ function getMobileOperatingSystem() {
         return "iOS";
     }
 
+    if (/Macintosh/.test(userAgent)) {
+        return "macOS";
+    }
+
     return "unknown";
 }</script>
 
@@ -31,6 +35,8 @@ function DetectAndServe(){
         window.location.href = "https://apps.apple.com/ru/app/%D0%BF%D0%B5%D1%80%D0%B2%D1%8B%D0%BC-%D0%B4%D0%B5%D0%BB%D0%BE%D0%BC/id6446926720";
     } else if (os == "Windows Phone") {
         window.location.href = "https://blanc.ru";
+    } else if (os == "macOS") {
+        window.location.href = "https://apps.apple.com/ru/app/%D0%BF%D0%B5%D1%80%D0%B2%D1%8B%D0%BC-%D0%B4%D0%B5%D0%BB%D0%BE%D0%BC/id6446926720";
     } else {
         window.location.href = "https://blanc.ru";
     }
