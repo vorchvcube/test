@@ -1,46 +1,26 @@
 <html lang="en">
 <head>
     <meta charset="utf-8" />
-<script>
-function getMobileOperatingSystem() {
-  var userAgent = navigator.userAgent || navigator.vendor || window.opera;
-
-      // Windows Phone must come first because its UA also contains "Android"
-    if (/windows phone/i.test(userAgent)) {
-        return "Windows Phone";
-    }
-
-    if (/android/i.test(userAgent)) {
-        return "Android";
-    }
-
-    // iOS detection from: http://stackoverflow.com/a/9039885/177710
-    if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
-        return "iOS";
-    }
-
-    if (/Macintosh/.test(userAgent)) {
-        return "macOS";
-    }
-
-    return "unknown";
-}</script>
-
-<script>
-function DetectAndServe(){
-    let os = getMobileOperatingSystem();
-    if (os == "Android") {
-        window.location.href = "https://play.google.com/store/apps/details?id=ru.blanc.business"; 
-    } else if (os == "iOS" || os == "macOS") {
-        window.location.href = "https://apps.apple.com/ru/app/%D0%BF%D0%B5%D1%80%D0%B2%D1%8B%D0%BC-%D0%B4%D0%B5%D0%BB%D0%BE%D0%BC/id6446926720";
-    } else if (os == "Windows Phone") {
-        window.location.href = "https://blanc.ru";
-    } else {
-        window.location.href = "https://blanc.ru";
-    }
-}
-</script>
 </head>
-<body onload="DetectAndServe()">
+<body>
+
+  <script>
+   window.chatwootSettings = {"position":"right","type":"standard","launcherTitle":"Пообщайтесь с нами"};
+      (function(d,t) {
+        var BASE_URL="chatwoot.release.vestabankdev.ru";
+        var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+        g.src=BASE_URL+"/packs/js/sdk.js";
+        g.defer = true;
+        g.async = true;
+        s.parentNode.insertBefore(g,s);
+        g.onload=function(){
+          window.chatwootSDK.run({
+            websiteToken: 'Vi6cG5CmYeU6dyHuU7pTGyBR',
+            baseUrl: BASE_URL
+          })
+        }
+      })(document,"script");
+    </script>
+    
 </body>
 </html>
